@@ -2,6 +2,11 @@
 
   <ion-toolbar>
     <ion-title>Pages</ion-title>
+    <ion-buttons end>
+      <button (click)="openSettingsModal()">
+        <icon settings></icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 
   <ion-content>
@@ -15,3 +20,5 @@
 </ion-menu>
 
 <ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="true"></ion-nav>
+
+<ion-overlay></ion-overlay>

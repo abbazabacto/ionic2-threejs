@@ -1,15 +1,16 @@
-import {App, IonicApp, Platform} from 'ionic-framework/ionic';
+import {App, IonicApp, Platform, Modal} from 'ionic-framework/ionic';
 
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ListPage} from './pages/list/list';
+
+import {SettingsModal} from './pages/settings-modal/settings-modal';
 
 @App({
   templateUrl: 'build/app.html'
 })
 
 class MyApp {
-  constructor(app: IonicApp, platform: Platform) {
-
+  constructor(app: IonicApp, platform: Platform, modal: Modal) {
     // set up our app
     this.app = app;
     this.platform = platform;
@@ -23,6 +24,8 @@ class MyApp {
 
     // make HelloIonicPage the root (or first) page
     this.rootPage = HelloIonicPage;
+    
+    this.modal = modal;
   }
 
   initializeApp() {
@@ -53,5 +56,9 @@ class MyApp {
     // navigate to the new page if it is not the current page
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
+  }
+  
+  openSettingsModal(){
+    this.modal.open(SettingsModal)
   }
 }
